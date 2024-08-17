@@ -62,7 +62,7 @@ def demo(screen):
                          colour=2,
                          start_frame=100))
     effects.append(Print(screen,
-                         ColourImageFile(screen, "in.gif"),
+                         ColourImageFile(screen, "flag.gif"),
                          screen.height // 2 - 16,
                          speed=1,
                          start_frame=200))
