@@ -10,7 +10,11 @@ from asciimatics.exceptions import ResizeScreenError
 from asciimatics.renderers.images import ColourImageFile
 from random import randint, choice
 import sys
+from playsound import playsound
+import threading
 
+def play_anthem():
+    playsound('anthem.mp3')
 
 def demo(screen):
     scenes = []
@@ -64,7 +68,16 @@ def demo(screen):
                          start_frame=200))
 
     scenes.append(Scene(effects, -1))
+    # Create a thread to play the sound
+    sound_thread = threading.Thread(target=play_anthem)
+
+    # Start the thread
+    sound_thread.start()
+
     screen.play(scenes, stop_on_resize=True)
+
+    # Optionally, wait for the thread to finish
+    sound_thread.join()
 
 while True:
     try:
